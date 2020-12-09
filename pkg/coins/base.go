@@ -30,6 +30,6 @@ type CoinNetwork struct {
 }
 
 type BIP32Information struct {
-	Private string `json:"private"`
-	Public  string `json:"public"`
+	Private int `json:"private"`
+	Public  int `json:"public"`
 }
