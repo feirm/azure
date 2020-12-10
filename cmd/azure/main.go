@@ -30,6 +30,7 @@ func main() {
 	r := chi.NewRouter()
 	r.Route("/v1", func(r chi.Router) {
 		r.Get("/coins", controller.ListAllCoins)
+		r.Post("/coin", controller.FetchCoin)
 	})
 
 	// Serve the HTTP router
