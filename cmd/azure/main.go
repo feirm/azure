@@ -8,6 +8,7 @@ import (
 
 	"github.com/feirm/azure/internal/controller"
 	"github.com/go-chi/chi"
+	"github.com/go-chi/cors"
 	"github.com/joho/godotenv"
 )
 
@@ -28,6 +29,17 @@ func main() {
 
 	// Routes
 	r := chi.NewRouter()
+
+	// CORS
+	r.Use(cors.Handler(cors.Options{
+		AllowedOrigins:   []string{"*"}, // Use this to allow specific origin hosts
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
+		ExposedHeaders:   []string{"Link"},
+		AllowCredentials: false,
+		MaxAge:           300, // Maximum value not ignored by any of major browsers
+	}))
+
 	r.Route("/v1", func(r chi.Router) {
 		r.Get("/coins", controller.ListAllCoins)
 		r.Post("/coin", controller.FetchCoin)
