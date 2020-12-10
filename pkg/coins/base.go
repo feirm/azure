@@ -1,7 +1,5 @@
 package coins
 
-import "encoding/json"
-
 type Coin struct {
 	CoinInformation CoinInformation `json:"coinInformation"`
 }
@@ -31,19 +29,7 @@ type BIP32Information struct {
 	Public  int `json:"public"`
 }
 
-// Feirm services use BitcoinJS for client-side cryptographic operations,
-// so all coins should be compatible with that in mind.
-
-// Convert coin to BitcoinJS Compatible network
-func ToBitcoinJS(coin Coin, network string) ([]byte, error) {
-	// Coins can have multiple networks (mainnet, testnet, regest etc), so we want support for those too if needed.
-	coinNetwork := coin.CoinInformation.Networks[network]
-
-	// Marshal to JSON
-	networkBytes, err := json.Marshal(coinNetwork)
-	if err != nil {
-		return nil, err
-	}
-
-	return networkBytes, nil
+// Coin request payload
+type RequestPayload struct {
+	Ticker string `json:"ticker"`
 }
