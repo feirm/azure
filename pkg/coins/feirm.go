@@ -11,6 +11,7 @@ var (
 			BIP44:     193,
 			Networks: map[string]CoinNetwork{
 				"p2pkh": {
+					MessagePrefix: "\x18DarkNet Signed Message:\n",
 					BIP32: BIP32Information{
 						Private: 0x0488ade4,
 						Public:  0x0488b21e,
