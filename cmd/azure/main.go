@@ -1,17 +1,45 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/feirm/azure/internal/controller"
+	"github.com/go-chi/chi"
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	log.Println("Azure microservice...")
+	asciiArt := `
+░█████╗░███████╗██╗░░░██╗██████╗░███████╗
+██╔══██╗╚════██║██║░░░██║██╔══██╗██╔════╝
+███████║░░███╔═╝██║░░░██║██████╔╝█████╗░░
+██╔══██║██╔══╝░░██║░░░██║██╔══██╗██╔══╝░░
+██║░░██║███████╗╚██████╔╝██║░░██║███████╗
+╚═╝░░╚═╝╚══════╝░╚═════╝░╚═╝░░╚═╝╚══════╝
+	`
+	fmt.Println(asciiArt)
+	log.Println("Starting cryptocurrency data microservice.")
+
+	// Load in the environment variables
+	godotenv.Load()
 
 	// Routes
-	http.HandleFunc("/v1/coins", controller.ListAllCoins)
+	r := chi.NewRouter()
+	r.Route("/v1", func(r chi.Router) {
+		r.Get("/coins", controller.ListAllCoins)
+	})
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	// Serve the HTTP router
+	bind := os.Getenv("bind")
+	port := os.Getenv("port")
+
+	log.Printf("Serving on http://%s:%s", bind, port)
+	s := &http.Server{
+		Addr:    fmt.Sprintf("%s:%s", bind, port),
+		Handler: r,
+	}
+	s.ListenAndServe()
 }
