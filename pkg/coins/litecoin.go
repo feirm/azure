@@ -11,13 +11,13 @@ var (
 			BIP44:     2,
 			Networks: map[string]CoinNetwork{
 				"p2pkh": {
-					MessagePrefix: "\x18Litecoin Signed Message:\n",
+					MessagePrefix: "\x19Litecoin Signed Message:\n",
 					BIP32: BIP32Information{
-						Private: 0x19d9cfe,
-						Public:  0x1b26ef6,
+						Private: 0x0488ade4,
+						Public:  0x0488b21e,
 					},
 					PubKeyHash: []int{48},
-					ScriptHash: []int{50},
+					ScriptHash: []int{5},
 					WIF:        []int{176},
 				},
 			},
