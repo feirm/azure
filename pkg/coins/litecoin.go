@@ -17,7 +17,7 @@ var (
 						Public:  0x0488b21e,
 					},
 					PubKeyHash: []int{48},
-					ScriptHash: []int{5},
+					ScriptHash: []int{50},
 					WIF:        []int{176},
 				},
 			},
