@@ -6,4 +6,5 @@ import (
 
 var Coins = map[string]*models.CoinData{
 	"XFE": &Feirm,
+	"BTC": &Bitcoin,
 }
