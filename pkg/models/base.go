@@ -11,7 +11,9 @@ type Coin struct {
 	Icon      string             `json:"icon"`
 	Blockbook string             `json:"blockbook"`
 	TxVersion int                `json:"txVersion"`
-	BIP44     int                `json:"bip44"`
+	TxBuilder string             `json:"txBuilder"` // Used to identify whether or not a different builder needs to be used
+	BIP44     int                `json:"bip44"`     // Taken from SatoshiLabs
+	Protocol  string             `json:"protocol"`  // Primarily used for BIP21 payment URIs
 	Networks  map[string]Network `json:"networks"`
 }
 
