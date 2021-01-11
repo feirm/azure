@@ -12,7 +12,7 @@ var (
 			Segwit:    false,
 			TxVersion: 1,
 			TxBuilder: "bitcoinjs",
-			BIP44:     193,
+			HDIndex:   193,
 			Protocol:  "feirm",
 			Networks: map[string]models.Network{
 				"p2pkh": {
