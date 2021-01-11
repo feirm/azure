@@ -10,6 +10,7 @@ type Coin struct {
 	Ticker    string             `json:"ticker"`
 	Icon      string             `json:"icon"`
 	Blockbook string             `json:"blockbook"`
+	Segwit    bool               `json:"segwit"`
 	TxVersion int                `json:"txVersion"`
 	TxBuilder string             `json:"txBuilder"` // Used to identify whether or not a different builder needs to be used
 	BIP44     int                `json:"bip44"`     // Taken from SatoshiLabs
