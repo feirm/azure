@@ -8,4 +8,5 @@ var Coins = map[string]*models.CoinData{
 	"XFE":  &Feirm,
 	"BTC":  &Bitcoin,
 	"DOGE": &Doge,
+	"XLN":  &Lunarium,
 }
